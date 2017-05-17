@@ -12,7 +12,6 @@ import java.time.Duration;
  * Session 共享处理 --
  * @author Created by Fomky on 2017/4/1412:35.
  */
-@Configuration
 public class SupportModules {
     @Value("${session.redis.host}")
     private String session_redis_host;

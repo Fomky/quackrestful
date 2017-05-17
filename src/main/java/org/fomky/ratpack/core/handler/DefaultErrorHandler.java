@@ -11,7 +11,6 @@ import ratpack.handling.Context;
 /**
  * @author Created by Fomky on 2017/3/315:27.
  */
-@Component
 public class DefaultErrorHandler implements ErrorHandler {
     private Logger logger = LoggerFactory.getLogger(DefaultErrorHandler.class);
     @Override
