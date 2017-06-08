@@ -12,24 +12,19 @@ import ratpack.session.SessionKey;
 /**
  * @author Created by Fomky on 2017/3/1811:41.
  */
-public abstract class UserControllers implements CoreHandle {
-
-    @Value("${server.api.prefix.users}")
-    private String prefix;
+public abstract class BaseHandle implements CoreHandle {
 
     @Override
     public void execute(Chain chain) throws Exception {
         //Add Error 处理
         ChainUtil.addAllSupport(chain)
-                //Add 访问日志处理
-                .all(RequestLogger.of(outcome -> {
-                    System.out.println("访问日志 ： " + outcome.getRequest().getUri());
-                }))
                 //Add users 处理函数
-                .prefix(prefix, this::users);
+                .prefix(prefix(), this::action);
     }
 
-    protected abstract void users(Chain chain);
+    protected abstract String prefix();
+
+    protected abstract void action(Chain chain);
 
     /**
      * 获取 Session 中Userid 如果没有， 返回客户端错误信息
@@ -47,7 +42,5 @@ public abstract class UserControllers implements CoreHandle {
     protected Session session(Context context){
         return context.get(Session.class);
     }
-
-
 
 }
