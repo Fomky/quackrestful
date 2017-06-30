@@ -13,9 +13,9 @@ import java.time.Duration;
  * @author Created by Fomky on 2017/4/1412:35.
  */
 public class SupportModules {
-    @Value("${session.redis.host}")
+    @Value("${spring.redis.host}")
     private String session_redis_host;
-    @Value("${session.redis.port}")
+    @Value("${spring.redis.port}")
     private Integer session_redis_port;
 
     @Bean
