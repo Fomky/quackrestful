@@ -1,5 +1,6 @@
 package org.fomky.ratpack.core.handler;
 
+import org.fomky.ratpack.core.session.SessionModuleHeaders;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +23,9 @@ public class SupportModules {
     public SessionModule sessionModule() {
         SessionModule sessionModule = new SessionModule();
         //.Session 过期时间 1 天
-        sessionModule.configure(sessionCookieConfig -> sessionCookieConfig.expires(Duration.ofDays(1)));
+        sessionModule.configure(sessionCookieConfig -> {
+            sessionCookieConfig.expires(Duration.ofDays(1));
+        });
         return sessionModule;
     }
 
